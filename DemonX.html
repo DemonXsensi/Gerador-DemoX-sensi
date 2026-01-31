@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DemonX Sensi – Gerador Profissional</title>
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#111827;
+      --accent:#ef4444;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+    }
+    *{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto}
+    body{margin:0;min-height:100vh;background:linear-gradient(180deg,#05070a,#0b0f14);color:var(--text);display:flex;align-items:center;justify-content:center;padding:16px}
+    .app{width:100%;max-width:420px}
+    .card{background:var(--card);border-radius:20px;padding:20px;box-shadow:0 20px 40px rgba(0,0,0,.5)}
+    h1{margin:0 0 6px;font-size:22px;text-align:center}
+    h2{font-size:16px;margin:18px 0 8px}
+    p.sub{margin:0 0 16px;color:var(--muted);text-align:center;font-size:13px}
+    .row{display:flex;gap:10px;margin-bottom:12px}
+    .col{flex:1}
+    label{font-size:12px;color:var(--muted)}
+    select,button{width:100%;padding:12px;border-radius:14px;border:none;background:#020617;color:var(--text);font-size:14px}
+    button{background:linear-gradient(135deg,#16a34a,#22c55e);font-weight:700;letter-spacing:.3px}
+    button:active{transform:scale(.98)}
+    .result,.opt{margin-top:16px;background:#020617;border-radius:16px;padding:14px}
+    .sensi{display:flex;justify-content:space-between;margin:6px 0;font-size:14px}
+    .sensi span{color:var(--accent);font-weight:700}
+    .opt p{font-size:13px;margin:6px 0;color:#c7d2fe}
+    .footer{margin-top:10px;text-align:center;font-size:11px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="card">
+      <h1>😈 DemonX Sensi <span style="color:#ef4444;font-size:14px">PRO</span></h1>
+      <p class="sub">Gerador insano de sensi + otimização automática</p><div id="lock" class="result"><label>🔒 Acesso PRO</label><input id="senha" type="password" placeholder="Digite a senha PRO" style="width:100%;padding:12px;border-radius:12px;border:none;background:#020617;color:#fff;margin-top:8px" /><button style="margin-top:10px" onclick="liberar()">DESBLOQUEAR</button></div><div id="conteudo" style="display:none"><h2>📱 Detecção do aparelho</h2>
+  <div class="result">
+    <div class="sensi">DPI estimado <span id="dpi"></span></div>
+    <div class="sensi">Device Pixel Ratio <span id="dpr"></span></div>
+  </div>
+
+  <h2>🎯 Preferências</h2>
+  <div class="row">
+    <div class="col">
+      <label>Tipo de celular</label>
+      <select id="tipo">
+        <option value="fraco">Fraco</option>
+        <option value="medio">Médio</option>
+        <option value="forte">Forte</option>
+      </select>
+    </div>
+    <div class="col">
+      <label>Estilo de mira</label>
+      <select id="mira">
+        <option value="precisa">Precisa (Capa)</option>
+        <option value="equilibrada">Equilibrada</option>
+        <option value="agressiva">Agressiva</option>
+      </select>
+    </div>
+  </div>
+
+  <button onclick="gerar()">GERAR SENSI AUTOMÁTICA</button>
+
+  <div class="result" id="resultado" style="display:none">
+    <div class="sensi">Geral <span id="geral"></span></div>
+    <div class="sensi">Red Dot <span id="red"></span></div>
+    <div class="sensi">2x Scope <span id="dois"></span></div>
+    <div class="sensi">4x Scope <span id="quatro"></span></div>
+    <div class="sensi">AWM <span id="awm"></span></div>
+  </div>
+
+  <h2>⚡ Otimização recomendada</h2>
+  <div class="opt" id="opt"></div>
+
+  <div id="proHidden" class="opt" style="display:none">
+
+<h2>😈 MODO PRO OCULTO</h2>
+<p>✔ Ajuste fino de capa (micro-movimento)</p>
+<p>✔ Redução de aceleração da mira</p>
+<p>✔ Recomendado DPI fixo (anti-variação)</p>
+<p>✔ Use HUD compacto e botão de tiro 48–52%</p>
+</div>
+<div class="footer">⚠️ Ajustes variam por aparelho • TikTok: @demonxrlq</div></div></div><script>
+function liberar(){
+  const senha = document.getElementById('senha').value.trim()
+  if(senha === 'DEMONX-PROX'){
+    document.getElementById('lock').style.display='none'
+    document.getElementById('conteudo').style.display='block'
+    document.getElementById('proHidden').style.display='block'
+  }else{
+    alert('Senha PRO incorreta')
+  }
+}
+}
+}function detectarDPI(){
+  const dpr = window.devicePixelRatio || 1
+  const dpi = Math.round(160 * dpr)
+  document.getElementById('dpi').innerText = dpi
+  document.getElementById('dpr').innerText = dpr
+  return dpi
+}
+
+function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
+
+function gerar(){
+  const dpi = detectarDPI()
+  const tipo=document.getElementById('tipo').value
+  const mira=document.getElementById('mira').value
+
+  let base=0
+  if(tipo==='fraco') base=rand(130,150)
+  if(tipo==='medio') base=rand(145,165)
+  if(tipo==='forte') base=rand(160,180)
+
+  // ajuste automático por DPI
+  let dpiAjuste = 0
+  if(dpi < 300) dpiAjuste = -10
+  if(dpi >= 300 && dpi <= 420) dpiAjuste = 0
+  if(dpi > 420) dpiAjuste = 10
+
+  let ajuste=0
+  if(mira==='precisa') ajuste=-10
+  if(mira==='equilibrada') ajuste=0
+  if(mira==='agressiva') ajuste=10
+
+  const total = base + ajuste + dpiAjuste
+
+  document.getElementById('geral').innerText=total
+  document.getElementById('red').innerText=total-10
+  document.getElementById('dois').innerText=total-20
+  document.getElementById('quatro').innerText=total-30
+  document.getElementById('awm').innerText=total-40
+
+  document.getElementById('resultado').style.display='block'
+
+  otimizar(tipo)
+}
+
+function otimizar(tipo){
+  let html = ''
+  if(tipo==='fraco'){
+    html += '<p>✔ Reduza gráficos para Padrão</p>'
+    html += '<p>✔ Desative apps em segundo plano</p>'
+    html += '<p>✔ Use DPI entre 360–400</p>'
+  }
+  if(tipo==='medio'){
+    html += '<p>✔ Gráficos Suave</p>'
+    html += '<p>✔ Ative modo jogo do sistema</p>'
+    html += '<p>✔ DPI ideal 400–440</p>'
+  }
+  if(tipo==='forte'){
+    html += '<p>✔ Gráficos Alto/Suave</p>'
+    html += '<p>✔ Forçar 90/120Hz se disponível</p>'
+    html += '<p>✔ DPI ideal 440–500</p>'
+  }
+  document.getElementById('opt').innerHTML = html
+}
+
+detectarDPI()
+
+</script></body>
+
+</html>
